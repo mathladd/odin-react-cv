@@ -1,0 +1,118 @@
+
+@import "./_rsrc";
+
+@include custResetDoc();
+
+.all__big-container {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.all__header-container, 
+.all__footer-container {
+    @include custFlexCenterAll();
+    padding: 2em;
+    
+    background-color: $colorGrey9;
+    color: $colorGrey2;
+    text-align: center;
+}
+
+.header-name {
+    font-size: 4rem;
+}
+
+.app {
+    @include custFlexCenterAll();
+    max-width: 60em;
+}
+
+.app-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: top;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-shadow: 0px 0px 20px black;
+}
+
+.personal {
+    flex: 0.3;
+    padding: 3.1em 2em 2em 2em;
+    border: 2px solid black;
+    border-right: none;
+}
+
+.info {
+    flex: 0.7;
+    padding: 2em;
+    border: 2px solid black;
+}
+
+.full-name {
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.heading-title {
+    margin-top: 2em;
+    text-decoration: underline;
+    color: $colorGrey7;
+}
+
+.edit-form {
+    @include custFlexCenterAll();
+    margin-bottom: 1em;
+}
+
+.edit-box-container {
+    width: 100%;
+}
+
+.edit-box {
+    width: 100%;
+    margin-bottom: 1em;
+    padding: 0.3em;
+}
+
+button {
+    border: 1px solid $colorGrey9;
+    border-radius: 14px;
+    padding: 0.5em;
+    margin: 0.5em;
+
+    font-size: 1.3rem;
+    background-color: $colorGrey9;
+    color: $colorNeutral1;
+}
+
+button:active {
+    background-color: $colorGrey7;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.fa:hover {
+    cursor: pointer;
+}
+
+.interests-list {
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+textarea {
+    height: 10em;
+}
+
+.career-company {
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.career-title {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
