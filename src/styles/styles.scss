@@ -55,6 +55,11 @@
     font-weight: 500;
 }
 
+.interests-list {
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
 .bio-title {
     margin-top: 2em;
 }
@@ -63,6 +68,44 @@
     @include custFontSizeXS();
     text-decoration: underline;
     color: $colorGrey7;
+}
+
+.info-container {
+    padding: 0.2em 0em 0.2em 0em;
+    margin: 1em 1.5em 2em 1.5em;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px $colorGrey4;
+
+    background-color: $colorGrey2;
+}
+
+.info-title {
+    margin: 0.5em 1em 0.5em 1em;
+}
+
+.info-box {
+    border-radius: 15px;
+    padding:0.7em;
+    margin: 0em 0.7em 1em 0.7em;
+    background-color: $colorWhite;
+}
+
+.info-year {
+    @include custFontSizeXXS();
+}
+
+.info-place {
+    margin-bottom: 0.3em; 
+
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.info-position {
+    margin-bottom: 0.3em; 
+
+    font-weight: 400;
+    font-size: 1.4rem;
 }
 
 .edit-form {
@@ -113,49 +156,6 @@ button:hover {
     cursor: pointer;
 }
 
-.interests-list {
-    font-size: 0.9em;
-    margin-top: 1em;
-}
-
 textarea {
     height: 10em;
-}
-
-.info-container {
-    padding: 0.2em 0em 0.2em 0em;
-    margin: 1em;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px $colorGrey4;
-
-    background-color: $colorGrey2;
-}
-
-.info-title {
-    margin: 0.5em 1em 0.5em 1em;
-}
-
-.info-box {
-    border-radius: 15px;
-    padding:0.7em;
-    margin: 0em 0.7em 1em 0.7em;
-    background-color: $colorWhite;
-}
-
-.info-year {
-    @include custFontSizeXXS();
-}
-
-.info-place {
-    margin-bottom: 0.3em; 
-
-    font-weight: 600;
-    font-size: 1.6rem;
-}
-
-.info-position {
-    margin-bottom: 0.3em; 
-
-    font-weight: 400;
-    font-size: 1.4rem;
 }
