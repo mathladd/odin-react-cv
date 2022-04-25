@@ -5,7 +5,7 @@ class Interests extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data,
+            data: data.interests,
         };
         this.delInt = this.delInt.bind(this);
     }
@@ -18,13 +18,12 @@ class Interests extends Component {
             return (
                 <li key={index}>
                     <span>{interest}</span>
-                    {this.props.edit ? (
+                    {(this.props.inteEdit) ?
                         <i
                             id={index}
                             className="fa fa-trash per-edit"
                             onClick={this.delInt}
-                        ></i>
-                    ) : null}
+                        ></i> : null}
                 </li>
             );
         });

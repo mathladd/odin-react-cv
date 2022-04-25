@@ -1,12 +1,14 @@
 import React from 'react';
 import data from '../data';
+import FullName from './FullName';
+import NameInput from './NameInput';
 import Contact from './Contact';
 import Social from './Social';
 import Interests from './Interests';
-import NameInput from './NameInput';
 import ContactInput from './ContactInput';
 import SocialInput from './SocialInput';
-import InteInput from './InteInput';
+import InterInput from './InterInput';
+import EditButton from './EditButton';
 
 class Name extends React.Component {
     constructor(props) {
@@ -36,73 +38,37 @@ class Name extends React.Component {
         this.setState({ inteEdit: !this.state.inteEdit });
     }
     render() {
-        return (
-            <div className="name-container">
-                <div className="container">
-                    {this.state.nameEdit ? (
-                        <NameInput done={this.editName} />
-                    ) : (
-                        <div>
-                            <span className="full-name">
-                                {' '}
-                                {data.name.first + ' '}{' '}
-                            </span>
-                            <span className="full-name">
-                                {' '}
-                                {data.name.last}{' '}
-                            </span>
-                            <i
-                                className="fa fa-pencil"
-                                aria-hidden="true"
-                                onClick={this.editName}
-                            ></i>
-                        </div>
-                    )}
-                </div>
-                {this.state.contactEdit ? (
-                    <ContactInput done={this.editContact} />
-                ) : (
-                    <Contact data={data.contact} done={this.editContact} />
-                )}
-                {data.social && (
-                    <div>
-                        <div className="heading-title">Social
-                            <i
-                                className="fa fa-pencil per-edit"
-                                aria-hidden="true"
-                                onClick={this.editSocial}
-                            ></i>
-                        </div>
-                        {this.state.socialEdit ? (
-                            <SocialInput done={this.editSocial} />
-                        ) : null}
-                        <Social
-                            data={data.social}
-                            edit={this.state.socialEdit}
-                        />
-                    </div>
-                )}
-                {data.interests && (
-                    <div>
-                        <div className="heading-title">
-                            Interests
-                            <i
-                                className="fa fa-pencil per-edit"
-                                aria-hidden="true"
-                                onClick={this.editInte}
-                            ></i>
-                        </div>
-                        {this.state.inteEdit ? (
-                            <InteInput done={this.editInte} />
-                        ) : null}
-                        <Interests
-                            data={data.interests}
-                            edit={this.state.inteEdit}
-                        />
-                    </div>
-                )}
+        return (<div className="bio-container">
+
+            {this.state.nameEdit ?
+            <NameInput editName={this.editName} /> : 
+            <FullName editName={this.editName} />}
+
+
+            <div className="heading-title bio-title">Contact Me
+                <EditButton onClick={this.editContact} />
             </div>
-        );
+            {this.state.contactEdit ? 
+            <ContactInput editContact={this.editContact} /> : 
+            <Contact editContact={this.editContact} />}
+
+
+            <div className="heading-title bio-title">Social
+                <EditButton onClick={this.editSocial} />
+            </div>
+            {this.state.socialEdit ?
+            <SocialInput editSocial={this.editSocial} /> : null}
+            {<Social editSocial={this.editSocial} socialEdit={this.state.socialEdit} />}
+
+
+            
+            <div className="heading-title bio-title">Interests
+                <EditButton onClick={this.editInte} />
+            </div>
+                {this.state.inteEdit ?
+                <InterInput editInte={this.editInte} /> : null}
+                <Interests editInte={this.editInte}  inteEdit={this.state.inteEdit} />
+        </div>);
     }
 }
 

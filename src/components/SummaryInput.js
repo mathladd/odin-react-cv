@@ -10,26 +10,29 @@ class SummaryInput extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.changeSumm = this.changeSumm.bind(this);
     }
+
     changeSumm(e) {
         data.summary = this.state.summary.trim();
-        this.props.done();
+        this.props.editSum();
     }
+
     handleChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     }
+    
     render() {
         return (
-            <form onSubmit={this.changeSumm}>
+            <form className="edit-form" onSubmit={this.changeSumm}>
                 <textarea
                     placeholder="write something about yourself..."
-                    id="summary" class="edit-box"
+                    id="summary" className="edit-box"
                     value={this.state.summary}
                     onChange={this.handleChange}
                 />
                 
-                <div class="edit-box-container"> 
+                <div className="edit-button-container"> 
                     <button>Submit</button>
-                    <button onClick={this.props.done}>Cancel</button>
+                    <button onClick={this.props.editSum}>Cancel</button>
                 </div>
             </form>
         );

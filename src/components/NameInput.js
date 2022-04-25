@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../data';
+import EditBox from './EditBox';
 
 class NameInput extends Component {
     constructor(props) {
@@ -11,43 +12,31 @@ class NameInput extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.changeName = this.changeName.bind(this);
     }
+
     changeName(e) {
         if (!this.state.firstName.trim() || !this.state.lastName.trim()) {
-            this.props.done();
+            this.props.editName();
             e.preventDefault();
             return;
         }
         data.name.first = this.state.firstName;
         data.name.last = this.state.lastName;
-        this.props.done();
+        this.props.editName();
     }
+
     handleChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     }
+
     render() {
         return (
             <form class="edit-form" onSubmit={this.changeName}>
-                <div>
-                    <input
-                        type="text" class="edit-box"
-                        placeholder="First Name"
-                        id="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                    ></input>
-                </div>
-                
-                <div>
-                    <input
-                        type="text" class="edit-box"
-                        placeholder="Last Name"
-                        id="lastName"
-                        value={this.state.lastName}
-                        onChange={this.handleChange}
-                    ></input>
-                </div>
 
-                <div class="edit-box-container"> 
+                <EditBox placeholder="First Name" id="firstName" onChange={this.handleChange} />
+
+                <EditBox placeholder="Last Name" id="lastName" onChange={this.handleChange} />
+
+                <div class="edit-button-container"> 
                     <button>Submit</button>
                 </div>
             </form>

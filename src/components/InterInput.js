@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../data';
+import EditBox from './EditBox';
 
 class InteInput extends Component {
     constructor(props) {
@@ -12,11 +13,11 @@ class InteInput extends Component {
     }
     addHobby(e) {
         if (this.state.hobby.trim() === '') {
-            this.props.done();
+            this.props.editInte();
             return;
         }
         data.interests.push(this.state.hobby);
-        this.props.done();
+        this.props.editInte();
         e.preventDefault();
     }
     handleChange(e) {
@@ -25,17 +26,13 @@ class InteInput extends Component {
     render() {
         return (
             <form onSubmit={this.addHobby}>
-                <label>Interest(Hobbies):</label> 
-                <input
-                    type="text" class="edit-box"
-                    placeholder="e.g. Cooking"
-                    id="hobby"
-                    value={this.state.hobby}
-                    onChange={this.handleChange}
-                ></input>
+                <div className="edit-title">Interest(Hobbies):</div> 
 
-                <div class="edit-box-container"> 
+                <EditBox placeholder="e.g. Cooking" id="hobby" onChange={this.handleChange} />
+
+                <div className="edit-button-container"> 
                     <button>Add</button>
+                    <button onClick={this.props.editInte}>Cancel</button>
                 </div>
             </form>
         );

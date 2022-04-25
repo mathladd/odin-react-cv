@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../data';
+import EditBox from './EditBox';
 
 class SocialInput extends Component {
     constructor(props) {
@@ -12,13 +13,14 @@ class SocialInput extends Component {
         this.handleForm = this.handleForm.bind(this);
         this.addSocial = this.addSocial.bind(this);
     }
-    addSocial(obj) {
-        if (obj.website === '' || obj.userName === '') return;
-        data.social = data.social.map((acc, index) => {
-            return { ...acc, id: index };
-        });
-        data.social.push({ ...obj, id: data.social.length });
+
+    addSocial(socAct) {
+        if (socAct.website !== '' && socAct.userName !== '') {
+            console.log('hi');
+            data.social.push({ ...socAct, id: data.social.length });
+        }
     }
+
     handleForm(e) {
         const obj = (() => {
             return {
@@ -28,37 +30,30 @@ class SocialInput extends Component {
             };
         })();
         this.addSocial(obj);
-        this.props.done();
+        this.props.editSocial();
         e.preventDefault();
     }
+
     handleChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     }
+
     render() {
         return (
-            <form onSubmit={this.handleForm}>
-                <div>Website:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="eg: instagram"
-                    id="website"
-                    value={this.state.website}
-                    onChange={this.handleChange}
-                ></input>
-                
-                <div>User Id:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="User Id"
-                    id="userName"
-                    value={this.state.userName}
-                    onChange={this.handleChange}
-                ></input>
-                
-                <div class="edit-box-container"> 
-                    <button>Submit</button>
-                </div>
-            </form>
+            <div>
+                <form onSubmit={this.handleForm}>
+                    <div className="edit-title">Website:</div>
+                    <EditBox placeholder="e.g. Instagram" id="website" onChange={this.handleChange} />
+                    
+                    <div className="edit-title">User Id:</div>
+                    <EditBox placeholder="User ID" id="userName" onChange={this.handleChange} />
+                    
+                    <div className="edit-button-container"> 
+                        <button>Submit</button>
+                        <button onClick={this.props.editSocial}>Cancel</button>
+                    </div>
+                </form>
+            </div>
         );
     }
 }

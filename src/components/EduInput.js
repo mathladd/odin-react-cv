@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditBox from './EditBox';
 import data from '../data';
 
 class EduInput extends Component {
@@ -8,83 +9,64 @@ class EduInput extends Component {
             startYear: '',
             endYear: '',
             year: '',
+            degree: '',
             school: '',
-            title: '',
+            classes: '',
         };
         this.handleChange = this.handleChange.bind(this);
         this.addEdu = this.addEdu.bind(this);
     }
+
     addEdu(e) {
-        let { startYear, endYear, year, school, title } = this.state;
-        if (
-            startYear.trim() === '' ||
-            endYear.trim() === '' ||
-            school.trim() === '' ||
-            title.trim() === ''
-        ) {
-            this.props.done();
-            e.preventDefault();
-            return;
+        let {startYear, endYear, degree, school, classes} = this.state;
+        if (startYear.trim() !== '' &&
+                endYear.trim() !== '' &&
+                degree.trim() !== '' &&
+                school.trim() !== '' &&
+                classes.trim() !== '') {
+            const year = startYear + ' - ' + endYear;
+            const newSchool = {year, degree, school, classes};
+            data.education.push({ ...newSchool, id: data.education.length });
         }
-        year = startYear + ' - ' + endYear;
-        const obj = (() => {
-            return { id: '', year, school, title };
-        })();
-        data.education = data.education.map((job, index) => {
-            return { ...job, id: index };
-        });
-        data.education.push({ ...obj, id: data.education.length });
-        this.props.done();
+        this.props.editEdu();
         e.preventDefault();
     }
+
     handleChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     }
+    
     render() {
         return (
-            <form onSubmit={this.addEdu}>
-                <div>Add Education Details:</div>
+            <form className="edit-form" onSubmit={this.addEdu}>
+                <div className="edit-box-container">
+                    <div className="edit-title">Starting Year:</div>
+                    <EditBox placeholder="e.g. 2009" id="startYear" onChange={this.handleChange} />
+                </div>
                 
-                <div>Starting Year:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="start year"
-                    id="startYear"
-                    value={this.state.startYear}
-                    onChange={this.handleChange}
-                ></input>
-                
-                <div>Ending Year:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="end year(/current)"
-                    id="endYear"
-                    value={this.state.endYear}
-                    onChange={this.handleChange}
-                ></input>
-                
-                <div>College/School Name:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="eg: Monsters.Inc"
-                    id="school"
-                    value={this.state.school}
-                    onChange={this.handleChange}
-                ></input>
-                
-                <div>Course Done:</div>
-                <input
-                    type="text" class="edit-box"
-                    placeholder="eg: Manager"
-                    id="title"
-                    value={this.state.title}
-                    onChange={this.handleChange}
-                ></input>
-                
+                <div className="edit-box-container">
+                    <div className="edit-title">Ending Year:</div>
+                    <EditBox placeholder="e.g. 2010 (or current)" id="endYear" onChange={this.handleChange} />
+                </div>
 
-                <div class="edit-box-container"> 
+                <div className="edit-box-container">
+                    <div className="edit-title">Degree:</div>
+                    <EditBox placeholder="e.g. MSc in Mechanical Engineering" id="degree" onChange={this.handleChange} />
+                </div>
+
+                <div className="edit-box-container">
+                    <div className="edit-title">School Name:</div>
+                    <EditBox placeholder="e.g. Monsters University" id="school" onChange={this.handleChange} />
+                </div>
+                
+                <div className="edit-box-container">
+                    <div className="edit-title">Course Completed:</div>
+                    <EditBox placeholder="e.g. Political Science 104" id="classes" onChange={this.handleChange} />
+                </div>
+
+                <div className="edit-button-container"> 
                     <button>Submit</button>
-                    <button onClick={this.props.done}>Cancel</button>
+                    <button onClick={this.props.editEdu}>Cancel</button>
                 </div>
             </form>
         );

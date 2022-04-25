@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Summary from './Summary';
 import Career from './Career';
-import Education from './Education';
+import Edu from './Edu';
 import SummaryInput from './SummaryInput';
 import CareerInput from './CareerInput';
 import EduInput from './EduInput';
-import data from '../data';
+import EditButton from './EditButton';
 
 class Info extends Component {
     constructor(props) {
@@ -36,66 +36,31 @@ class Info extends Component {
     render() {
         return (
             <div>
-                <div className="tile is-parent">
-                    <article className="tile is-child notification box">
-                        <div className="subtitle heading-title">
-                            Summary:
-                            <i
-                                className="fa fa-pencil per-edit"
-                                aria-hidden="true"
-                                onClick={this.editSum}
-                            ></i>
-                        </div>
-                        <div className="content">
-                            {this.state.sumEdit ? (
-                                <SummaryInput done={this.editSum} />
-                            ) : (
-                                <Summary summary={data.summary} />
-                            )}
-                        </div>
-                    </article>
+                <div className="info-container">
+                    <div className="heading-title info-title">Summary:
+                        <EditButton onClick={this.editSum} />
+                    </div>
+                    {this.state.sumEdit ?
+                    <SummaryInput editSum={this.editSum} /> :
+                    <Summary />}
                 </div>
-                <div className="tile is-parent">
-                    <article className="tile is-child notification box">
-                        <div className="subtitle heading-title">
-                            Career:
-                            <i
-                                className="fa fa-pencil per-edit"
-                                aria-hidden="true"
-                                onClick={this.editCareer}
-                            ></i>
-                        </div>
-                        <div className="content">
-                            {this.state.careerEdit ? (
-                                <CareerInput done={this.editCareer} />
-                            ) : null}
-                            <Career
-                                career={data.career}
-                                edit={this.state.careerEdit}
-                            />
-                        </div>
-                    </article>
+                
+                <div className="info-container">
+                    <div className="heading-title info-title">Career:
+                        <EditButton onClick={this.editCareer} />
+                    </div>
+                    {this.state.careerEdit ?
+                    <CareerInput editCareer={this.editCareer} /> : null}
+                    <Career careerEdit={this.state.careerEdit} />
                 </div>
-                <div className="tile is-parent">
-                    <article className="tile is-child notification box">
-                        <div className="subtitle heading-title">
-                            Education:
-                            <i
-                                className="fa fa-pencil per-edit"
-                                aria-hidden="true"
-                                onClick={this.editEdu}
-                            ></i>
-                        </div>
-                        <div className="content">
-                            {this.state.eduEdit ? (
-                                <EduInput done={this.editEdu} />
-                            ) : null}
-                            <Education
-                                edu={data.education}
-                                edit={this.state.eduEdit}
-                            />
-                        </div>
-                    </article>
+
+                <div className="info-container">
+                    <div className="heading-title info-title">Education:
+                        <EditButton onClick={this.editEdu} />
+                    </div>
+                    {this.state.eduEdit ?
+                    <EduInput editEdu={this.editEdu} /> : null}
+                    <Edu eduEdit={this.state.eduEdit} />
                 </div>
             </div>
         );

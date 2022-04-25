@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import data from '../data';
 
 class Contact extends Component {
     constructor(props) {
@@ -7,17 +8,9 @@ class Contact extends Component {
     }
 
     render() {
-        let { phone, email, linkedIn } = this.props.data;
+        let { phone, email, linkedIn } = data.contact;
         return (
             <div>
-                <div className="heading-title">
-                    Contact Me
-                    <i
-                        className="fa fa-pencil per-edit"
-                        aria-hidden="true"
-                        onClick={this.props.done}
-                    ></i>
-                </div>
                 {phone === '' || (
                     <div className="container">
                         <span className="subtitle">Phone: </span>
