@@ -43,13 +43,15 @@ let data = {
             id: 0,
             year: '2022 - 2025 expected',
             school: 'Good University',
-            title: 'MSc in Something',
+            degree: 'MSc in Something',
+            classes: 'class 101',
         },
         {
             id: 1,
             year: '2015 - 2019',
             school: 'Good College',
-            title: 'Bachelors in Something',
+            degree: 'Bachelors in Something',
+            classes: 'grad course 204',
         },
     ],
 };

@@ -25,8 +25,9 @@ class EduInput extends Component {
                 school.trim() !== '' &&
                 classes.trim() !== '') {
             const year = startYear + ' - ' + endYear;
-            const newSchool = {year, degree, school, classes};
-            data.education.push({ ...newSchool, id: data.education.length });
+            const newSchool = {year, school, degree, classes};
+            data.education.push({id: data.education.length, ...newSchool})
+            console.log(data.education);
         }
         this.props.editEdu();
         e.preventDefault();

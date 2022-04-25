@@ -4,9 +4,6 @@ import data from '../data';
 class Education extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            edu: data.education,
-        };
         this.delEdu = this.delEdu.bind(this);
     }
 
@@ -29,7 +26,8 @@ class Education extends Component {
                                 onClick={this.delEdu}
                             ></span> : null}
                     </div>
-                    <div className="info-position" >{study.title}</div>
+                    <div className="info-position" >{study.degree}</div>
+                    <div className="info-extra" >{study.classes}</div>
                 </div>
             );
         });

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import data from '../data';
 
 class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
+    
     render() {
         let { phone, email, linkedIn } = data.contact;
         return (

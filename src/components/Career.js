@@ -4,9 +4,6 @@ import data from '../data';
 class Career extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: data.career,
-        };
         this.delJob = this.delJob.bind(this);
     }
 
@@ -30,7 +27,7 @@ class Career extends Component {
                             ></span> : null}
                     </div>
                     <div className="info-position">{work.position}</div>
-                    <div>{work.workDone}</div>
+                    <div className="info-extra">{work.workDone}</div>
                 </div>
             );
         });

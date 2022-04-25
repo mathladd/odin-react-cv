@@ -108,6 +108,10 @@
     font-size: 1.4rem;
 }
 
+.info-extra {
+    @include custFontSizeXXS();
+}
+
 .edit-form {
     @include custFlexCenterAll();
     margin-bottom: 1em;

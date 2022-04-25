@@ -6,8 +6,8 @@ class ContactInput extends Component {
     constructor(props) {
         super(props);
         this.state = { ...data.contact };
-        this.handleChange = this.handleChange.bind(this);
         this.changeContact = this.changeContact.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     changeContact(e) {
