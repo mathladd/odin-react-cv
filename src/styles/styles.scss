@@ -24,6 +24,7 @@
 
 .app {
     @include custFlexCenterAll();
+    margin: auto;
     max-width: 60em;
 }
 
