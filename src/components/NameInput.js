@@ -14,14 +14,12 @@ class NameInput extends Component {
     }
 
     changeName(e) {
-        if (!this.state.firstName.trim() || !this.state.lastName.trim()) {
-            this.props.editName();
-            e.preventDefault();
-            return;
+        if (this.state.firstName.trim() && this.state.lastName.trim()) {
+            data.name.first = this.state.firstName;
+            data.name.last = this.state.lastName;
         }
-        data.name.first = this.state.firstName;
-        data.name.last = this.state.lastName;
         this.props.editName();
+        e.preventDefault();
     }
 
     handleChange(e) {

@@ -11,18 +11,19 @@ class InteInput extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.addHobby = this.addHobby.bind(this);
     }
+    
     addHobby(e) {
-        if (this.state.hobby.trim() === '') {
-            this.props.editInte();
-            return;
+        if (this.state.hobby.trim() !== '') {
+            data.interests.push(this.state.hobby);
         }
-        data.interests.push(this.state.hobby);
         this.props.editInte();
         e.preventDefault();
     }
+
     handleChange(e) {
         this.setState({ [e.target.id]: e.target.value });
     }
+
     render() {
         return (
             <form onSubmit={this.addHobby}>

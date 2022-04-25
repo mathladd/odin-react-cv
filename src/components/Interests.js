@@ -4,9 +4,6 @@ import data from '../data';
 class Interests extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: data.interests,
-        };
         this.delInt = this.delInt.bind(this);
     }
     delInt(e) {
@@ -14,7 +11,7 @@ class Interests extends Component {
         this.setState({ data: data.interests });
     }
     render() {
-        const arr = this.state.data.map((interest, index) => {
+        const arr = data.interests.map((interest, index) => {
             return (
                 <li key={index}>
                     <span>{interest}</span>

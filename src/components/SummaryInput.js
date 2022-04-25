@@ -3,16 +3,17 @@ import data from '../data';
 
 class SummaryInput extends Component {
     constructor(props) {
-        super(props);
+        super(props);        
         this.state = {
-            summary: data.summary,
+            summary: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.changeSumm = this.changeSumm.bind(this);
     }
 
-    changeSumm(e) {
-        data.summary = this.state.summary.trim();
+    changeSumm() {
+        let { summary } = this.state;
+        if (summary.trim() !== '') { data.summary = summary; }
         this.props.editSum();
     }
 

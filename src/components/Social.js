@@ -4,9 +4,6 @@ import data from '../data';
 class Social extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            socialDat: data.social,
-        };
         this.delSocial = this.delSocial.bind(this);
     }
 
@@ -15,7 +12,6 @@ class Social extends Component {
         data.social = data.social.map((acc, index) => {
             return { ...acc, id: index };
         });
-        this.setState({ socialDat: data.social });
     }
 
     componentDidUpdate(prevProps) {
@@ -24,7 +20,7 @@ class Social extends Component {
         }
     }
     render() {       
-        const socArr = this.state.socialDat.map((handle) => {
+        const socArr = data.social.map((handle) => {
             return (
                 <div className="container" key={handle.id}>
                     <span className="subtitle">{handle.website + ': '}</span>

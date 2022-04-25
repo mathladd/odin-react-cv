@@ -16,7 +16,6 @@ class SocialInput extends Component {
 
     addSocial(socAct) {
         if (socAct.website !== '' && socAct.userName !== '') {
-            console.log('hi');
             data.social.push({ ...socAct, id: data.social.length });
         }
     }
